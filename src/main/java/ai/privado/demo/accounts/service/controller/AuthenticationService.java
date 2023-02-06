@@ -53,6 +53,9 @@ public class AuthenticationService {
 	private ObjectMapper objectMapper;
 	private SlackStub slackStub;
 	private SendGridStub sgStub;
+	
+	@Value("${slack.base.url}")
+        private static final String slackWebHookURL;
 
 	@Autowired
 	public AuthenticationService(UserRepository userr, SessionsR sesr, ModelMapper mapper, DataLoggerS datalogger,
@@ -137,7 +140,7 @@ public class AuthenticationService {
 	}
 
 	public void sendSlackMessage(String id, String message) {
-		var slackWebHookURL = "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX";
+		// var slackWebHookURL = "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX";
 
 		var client = Slack.getInstance();
 		try {
